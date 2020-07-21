@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.chaquo.python'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    sourceSets {
+        main {
+            python {
+                srcDirs = ["src/main/python"]
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.skin_Cancer_Samrtphone"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        python {
+            // If Chaquopy fails to find Python on your build machine, enable the following
+            // line and edit it to point to Python 3.5 or later.
+            // buildPython "C:/Python36/python.exe"
+
+
+        }
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+        python{
+            buildPython "E:/Python/python.exe"
+            pip{
+                install "numpy==1.17.4"
+                //install "opencv-contrib-python"
+                //install "opencv-contrib-python-headless"
+                //install "opencv-python-headless"
+                //install "torchvision"
+                install "opencv-python"
+                //install "scipy==1.0.1"
+
+            }
+
+
+        }
+    }
+    aaptOptions {
+        noCompress "tflite"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:<version>'
+    api 'com.google.android.material:material:1.1.0-alpha06'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+    implementation('org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly') { changing = true }
+    implementation('org.tensorflow:tensorflow-lite-support:0.0.0-nightly') { changing = true }
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'org.pytorch:pytorch_android:1.4.0'
+    implementation 'org.pytorch:pytorch_android_torchvision:1.4.0'
+}
