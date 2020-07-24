@@ -1,2 +1,2 @@
 # SkinCancer_Detection_Smartphone
-![Webp net-resizeimage](https://user-images.githubusercontent.com/56086022/88094670-948add80-cbb1-11ea-96d6-cf50b6e83296.jpg)
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/56086022/88383117-7f879780-cdc7-11ea-82d3-6cbcb3df161b.gif)
